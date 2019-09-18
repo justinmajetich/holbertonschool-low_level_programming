@@ -2,6 +2,8 @@
 
 /**
 * main - Prints string
+*
+* Return: 0
 */
 int main(void)
 {
