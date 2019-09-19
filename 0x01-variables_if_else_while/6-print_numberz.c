@@ -3,21 +3,19 @@
 /**
   * main - print single digits of base 10
   *
-  * Return: 0
+  * Return: 0 if Success
   */
 int main(void)
 	{
 	int i;
 
-	i = 0;
-
-	while (i < 10)
+	i = 48;
+	while (i < 58)
 		{
-		printf("%d", i);
-		i++;	
+		putchar(i);
+		i++;
 		}
-
-	printf("\n");
+	putchar('\n');
 
 	return (0);
 	}
