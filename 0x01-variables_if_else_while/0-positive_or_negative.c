@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
-#include <limits.h>
+#include <stdio.h>
 
 /**
 * main - Identify var value in relation to zero, print
@@ -19,7 +19,7 @@ int main(void)
 	else if (n == 0)
 		printf("%d is zero\n", n);
 	else
-		printf("%d is zero\n", n);
+		printf("%d is negative\n", n);
 
 	return (0);
 }
