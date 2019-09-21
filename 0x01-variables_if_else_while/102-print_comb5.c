@@ -7,38 +7,40 @@
  */
 int main(void)
 {
-	int h;
 	int i;
 	int j;
 	int k;
 	int l;
 
-	for (h = 48; h < 58; h++)
+	int l_add = 0;
+
+	for (i = 48; i < 58; i++)
 	{
-		for (i = 48; i < 58; i++)
+		for (j = 48; j < 58;)
 		{
-			for (j = 48; j < 58; j++)
+			l_add = (j - 48) + 1;
+
+			for (k = i; k < 58; k++)
 			{
-				putchar(i);
-				putchar(j);
-				putchar(' ');
-			}
-		}
-
-
-		for (k = 48; k < 58; k++)
-		{
-			for (l = 48; l < 58; l++)
-			{
-				putchar(k);
-				putchar(l);
-
-				if (!(i == 48 && j == 47 && k == 48 && l == 48))
+				for (l = 48 + l_add; l < 58; l++)
 				{
-					putchar(',');
-					putchar(' ');
+					if (!(i == k && j == l))
+					{
+						putchar(i);
+						putchar(j);
+						putchar(' ');
+						putchar(k);
+						putchar(l);
+
+						if (!(i == 57 && j == 56 && k == 57 && l == 57))
+						{
+							putchar(',');
+							putchar(' ');
+						}
+					}
 				}
 			}
+			j++;
 		}
 	}
 	putchar('\n');
