@@ -6,7 +6,7 @@
  * @b: number to be added
  *
  * Description: A simple function to determine
- * the sum of two integers. Receives numbers, 
+ * the sum of two integers. Receives numbers,
  * adds them together, and returns result.
  * Return: result of addition
  */
