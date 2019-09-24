@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stdio.h>
 #include "holberton.h"
 
 /**
@@ -10,43 +10,23 @@
  */
 void print_to_98(int n)
 {
-	int n_abs;
-
+	
 	if (n <= 98)
 		for (; n <= 98; n++)
 		{
-			if (n < 0)
-			{
-				_putchar('-');
-				n_abs = abs(n);
-				if (n_abs / 10 != 0)
-					_putchar((n_abs / 10) + '0');
-				_putchar((n_abs % 10) + '0');
-			}
-			if (n >= 0)
-			{
-				if (n / 10 != 0)
-					_putchar((n / 10) + '0');
-				_putchar((n % 10) + '0');
-			}
+			printf("%i", n);
+
 			if (n != 98)
-			{
-				_putchar(',');
-				_putchar(' ');
-			}
+				printf(", ");
 		}
 	else
 		for (; n >= 98; n--)
 		{
-			if (n / 100 != 0)
-				_putchar((n / 100) + '0');
-			_putchar(((n / 10) % 10) + '0');
-			_putchar((n % 10) + '0');
+			printf("%i", n);
+			
 			if (n != 98)
-			{
-				_putchar(',');
-				_putchar(' ');
-			}
+				printf(", ");
+
 		}
-		_putchar('\n');
+		printf("\n");
 }
