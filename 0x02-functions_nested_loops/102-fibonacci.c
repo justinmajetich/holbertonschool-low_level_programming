@@ -7,11 +7,12 @@
  */
 int main(void)
 {
-	int i, num1 = 0, num2 = 1, numx;
+	int i;
+	unsigned long num1 = 0, num2 = 1, numx;
 
 	for (i = 0; i <= 49; i++)
 	{
-		printf("%d", num1);
+		printf("%lu", num1);
 
 		numx = num1 + num2;
 		num1 = num2;
