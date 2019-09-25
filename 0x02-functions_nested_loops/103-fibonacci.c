@@ -8,7 +8,11 @@
 int main(void)
 {
 	int i;
-	unsigned long num1 = 1, num2 = 2, numx, sum;
+
+	unsigned long num1 = 1;
+	unsigned long num2 = 2;
+	unsigned long numx;
+	unsigned long sum = 0;
 
 	for (i = 0; i <= 31; i++)
 	{
