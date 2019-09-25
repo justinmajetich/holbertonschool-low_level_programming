@@ -22,7 +22,7 @@ int main(void)
 		num2 = numx;
 	}
 
-	printf("SUM: %lu\n", sum);
+	printf("%lu\n", sum);
 
 	return (0);
 }
