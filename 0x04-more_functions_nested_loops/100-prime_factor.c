@@ -2,7 +2,7 @@
 
 /**
  * main - print largest prime factor of 612852475143
- * Return: 0 on Success
+ * Return: 1 on Success, 0 on Fail
  */
 int main(void)
 {
@@ -15,10 +15,10 @@ int main(void)
 		prime_candidate = i;
 
 		if (num % prime_candidate == 0)
-		{	
+		{
 			printf("%lu\n", prime_candidate);
-			return (0);
+			return (1);
 		}
 	}
-	return (1);
+	return (0);
 }
