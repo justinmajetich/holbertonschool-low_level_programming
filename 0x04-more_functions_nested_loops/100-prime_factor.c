@@ -2,23 +2,22 @@
 
 /**
  * main - print largest prime factor of 612852475143
- * Return: 1 on Success, 0 on Fail
+ * Return: 0 on Success
  */
 int main(void)
 {
 	unsigned long num = 612852475143;
 	unsigned long i;
-	unsigned long prime_candidate;
+	unsigned long large_prime;
 
-	for (i = num - 1; i > 1; i--)
+	for (i = 2; i <= num; i++)
 	{
-		prime_candidate = i;
-
-		if (num % prime_candidate == 0)
+		if (num % i == 0)
 		{
-			printf("%lu\n", prime_candidate);
-			return (1);
+			large_prime = i;
+			num /= large_prime;
 		}
 	}
+	printf("%lu\n", large_prime);
 	return (0);
 }
