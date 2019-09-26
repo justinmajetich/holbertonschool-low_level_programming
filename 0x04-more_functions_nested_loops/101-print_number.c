@@ -11,10 +11,6 @@ void print_number(int n)
 		_putchar('-');
 	else
 		n *= -1;
-	if ((n / 1000000000) % 10 != 0)
-		zero_switch = 1;
-	if (zero_switch == 1)
-		_putchar(-(n / 1000000000) % 10 + '0');
 	if ((n / 100000000) % 10 != 0)
 		zero_switch = 1;
 	if (zero_switch == 1)
