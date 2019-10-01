@@ -8,7 +8,7 @@
  */
 int _atoi(char *s)
 {
-	int i = 0, sign = 1, digit, integer = 0;
+	int i = 0, sign = 1, digit, integer = 0, num_switch = 0;
 
 	printf("Initial string: %s\n", s);
 
@@ -21,7 +21,10 @@ int _atoi(char *s)
 		{
 			digit = (s[i] - '0');
 			integer = (integer * 10) + digit;
+			num_switch = 1;
 		}
+		if ((s[i] < '0' || s[i] > '9') && num_switch == 1)
+			break;
 	}
 
 	if (sign < 0)
