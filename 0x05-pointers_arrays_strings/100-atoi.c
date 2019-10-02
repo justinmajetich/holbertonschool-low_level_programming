@@ -19,12 +19,15 @@ int _atoi(char *s)
 		{
 			digit = (s[i] - '0');
 
-			if (intg > INT_MAX / 10 || intg * 10 > INT_MAX - digit)
+			if (intg < 0)
+				digit *= -1;
+
+			if (intg > 0 && (intg > INT_MAX / 10 || intg * 10 > INT_MAX - digit))
 				return (INT_MAX);
-			else if (intg < 0 && (intg < INT_MIN / 10 || intg * 10 < INT_MIN - digit))
+			if (intg < 0 && (intg < INT_MIN / 10 || (intg * 10 < INT_MIN - digit)))
 				return (INT_MIN);
-			else
-				intg = (intg * 10) + digit;
+
+			intg = (intg * 10) + digit;
 
 			if (sign == -1 && intg >= 0)
 				intg *= -1;
