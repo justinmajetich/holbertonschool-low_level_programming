@@ -10,8 +10,6 @@ int _atoi(char *s)
 {
 	int i = 0, sign = 1, digit, integer = 0, num_switch = 0;
 
-	printf("Initial string: %s\n", s);
-
 	for (; s[i] != '\0'; i++)
 	{
 		if (s[i] == '-')
