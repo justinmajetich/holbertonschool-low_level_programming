@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/**
+ * main - change value to 98
+ * Return: 0 on Success
+ */
 int main(void)
 {
 	int n;
