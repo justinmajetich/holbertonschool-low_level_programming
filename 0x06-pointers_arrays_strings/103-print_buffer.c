@@ -17,13 +17,13 @@ void print_buffer(char *b, int size)
 			if (thru_cnt % 10 == 0)
 				printf("%08x: ", thru_cnt);
 			printf("%02x", b[thru_cnt]);
-			if (thru_cnt == size - 1)
+			if (thru_cnt == size - 1 && thru_cnt % 10 != 9)
 				for (spc_cnt = size % 10; spc_cnt <= 9; spc_cnt++)
 					printf("  ");
 
 			if (thru_cnt != 0 && thru_cnt % 2 != 0)
 				printf(" ");
-			if (thru_cnt == size - 1)
+			if (thru_cnt == size - 1 && thru_cnt % 10 != 9)
 				for (spc_cnt = (size % 10) / 2; spc_cnt <= 4; spc_cnt++)
 					printf(" ");
 
