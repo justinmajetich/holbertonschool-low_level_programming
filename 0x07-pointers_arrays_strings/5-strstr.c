@@ -9,29 +9,30 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	int i, match = 0;
+	int i, hay_cnt, match = 0;
 
-	while (*haystack != 0)
+	/* loop through haystack string */
+	for (hay_cnt = 0; haystack[hay_cnt] != '\0'; hay_cnt++)
 	{
-		if (*haystack == needle[0])
+		if (haystack[hay_cnt] == needle[0])
 		{
-			for (i = 0; needle[i] != 0;)
+			for (i = 0; needle[i] != '\0';)
 			{
-				if (haystack[i] == needle[i])
+				/* comparing haystack to needle sequence */
+				if (haystack[hay_cnt + i] == needle[i])
 				{
 					match = 1;
-					i++;
 				}
 				else
 				{
 					match = 0;
 					break;
 				}
+				i++;
 			}
 			if (match)
-				return (haystack);
+				return ((haystack + hay_cnt));
 		}
-		haystack++;
 	}
-	return (0);
+	return ('\0');
 }
