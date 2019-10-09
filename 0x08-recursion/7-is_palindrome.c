@@ -35,7 +35,7 @@ int cmpchar(char *s, int l_char, int length)
 {
 	if (!*s)
 		return (1);
-	if (l_char == length / 2)
+	if (l_char == (length / 2) - 1)
 		return (1);
 	if (*s == *(s + l_char))
 	{
