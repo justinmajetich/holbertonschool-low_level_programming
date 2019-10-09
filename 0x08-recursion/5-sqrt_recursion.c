@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 
 int counter(int n, int x);
 
@@ -12,8 +11,7 @@ int counter(int n, int x);
 int _sqrt_recursion(int n)
 {
 	int x = n;
-	if (n == 0)
-		return (-1);
+
 	return (counter(n, x));
 }
 
@@ -26,10 +24,11 @@ int _sqrt_recursion(int n)
  */
 int counter(int n, int x)
 {
+	if (x <= 0)
+		return (-1);
+
 	if (x * x == n)
 		return (x);
-	else if (x <= 0)
-		return (-1);
-	else
-		return (counter(n, x - 1));
+
+	return (counter(n, x - 1));
 }
