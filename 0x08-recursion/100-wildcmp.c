@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 
 int subcmp(char *s1, char *s2, int i);
 
@@ -15,10 +14,10 @@ int wildcmp(char *s1, char *s2)
 	/* if s1 and s2 are both at '\0' return 1 */
 	if (!*s1 && !*s2)
 		return (1);
-	/* if s1 is equal to s2 proceed thru both */	
+	/* if s1 is equal to s2 proceed thru both */
 	if (*s1 == *s2)
 		return (wildcmp(s1 + 1, s2 + 1));
-	/* if s1 and s2 are not equal */	
+	/* if s1 and s2 are not equal */
 	else if (*s1 != *s2)
 	{
 		/* if s1 is not s2 but s2 is '*' */
@@ -40,12 +39,20 @@ int wildcmp(char *s1, char *s2)
 	return (1);
 }
 
-int subcmp(char *s1,char *s2, int i)
+/**
+ * subcmp - compare s1 to char proceeding '!' in s1
+ * @s1: string to compare
+ * @s2: string to compare to
+ * @i: counter
+ *
+ * Return: i on Success, 0 on Fail
+ */
+int subcmp(char *s1, char *s2, int i)
 {
 	if (*(s1 + i) == *(s2 + 1))
 		return (i);
 	else if (*(s1 + i) == '\0')
 		return (0);
 	else
-		return subcmp(s1, s2, i + 1);	
+		return (subcmp(s1, s2, i + 1));
 }
