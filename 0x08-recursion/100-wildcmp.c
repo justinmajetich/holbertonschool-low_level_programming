@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 
 int subcmp(char *s1, char *s2, int i);
 
@@ -31,7 +32,7 @@ int wildcmp(char *s1, char *s2)
 			/* if s2 is not followed by '*' proceed from next s1 that matches s2 + 1 */
 			else
 			{
-				return (wildcmp(s1 + subcmp(s1, s2, 0), s2 + 1));
+				return (wildcmp(s1 + subcmp(s1, s2, (_strlen_recursion(s1) - 1)), s2 + 1));
 			}
 		}
 		return (0);
@@ -54,5 +55,19 @@ int subcmp(char *s1, char *s2, int i)
 	else if (*(s1 + i) == '\0')
 		return (0);
 	else
-		return (subcmp(s1, s2, i + 1));
+		return (subcmp(s1, s2, i - 1));
+}
+
+/**
+ * _strlen_recursion - returns length of string
+ * @s: string to count
+ *
+ * Return: length of string
+ */
+int _strlen_recursion(char *s)
+{
+	if (*s)
+		return (1 + _strlen_recursion(s + 1));
+	else
+		return (0);
 }
