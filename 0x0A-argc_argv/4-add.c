@@ -12,7 +12,7 @@ int convert_string(char *string);
  */
 int main(int argc, char **argv)
 {
-	int result = 0, i;
+	int result = 0, i, digit_check;
 
 	/* make sure there are number args */
 	if (argc == 1)
@@ -23,23 +23,35 @@ int main(int argc, char **argv)
 	/* loop through arguments */
 	for (i = 1; i < argc; i++)
 	{
-		result += convert_string(*(argv + i));
+		/* return 1 if non-digit found */
+		digit_check = convert_string(*(argv + i));
+		if (digit_check == -1)
+			return (1);
+		/* if only digit(s), add to result */
+		else
+			result += digit_check;
 	}
 	printf("%d\n", result);
 	return (0);
 }
 
+/**
+ * convert_string - convert string to integer
+ * @string: string to convert
+ *
+ * Return: converted integer
+ */
 int convert_string(char *string)
 {
- 	int i, digit = 0, integer = 0;
+	int i, digit = 0, integer = 0;
 
 	for (i = 0; *(string + i) != '\0'; i++)
 	{
 		if (*(string + i) < '0' || *(string + i) > '9')
-			{
-				printf("Error\n");
-				return (1);
-			}
+		{
+			printf("Error\n");
+			return (-1);
+		}
 		digit = *(string + i) - '0';
 		integer = (integer * 10) + digit;
 	}
