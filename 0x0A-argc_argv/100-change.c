@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	int cents, coin_cnt = 0;
 
 	/* confirm proper arg count */
-	if (argc > 2)
+	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
@@ -29,37 +29,33 @@ int main(int argc, char **argv)
 	}
 	/* convert string to integer */
 	cents = _atoi(argv[1]);
-	while (cents)
+
+	while (cents >= 25)
 	{
-		/* computational blocks */
-		if (cents % 25 == 0)
-		{
-			cents -= 25;
-			coin_cnt++;
-		}
-		else if (cents % 10 == 0)
-		{
-			cents -= 10;
-			coin_cnt++;
-		}
-		else if (cents % 5 == 0)
-		{
-			cents -= 5;
-			coin_cnt++;
-		}
-		else if (cents % 2 == 0)
-		{
-			cents -= 2;
-			coin_cnt++;
-		}
-		else
-		{
-			cents--;
-			coin_cnt++;
-		}
+		cents -= 25;
+		coin_cnt++;
 	}
-	/* add any remaining single cent coins and print/return */
-	printf("%d\n", (coin_cnt += cents));
+	while (cents >= 10)
+	{
+		cents -= 10;
+		coin_cnt++;
+	}
+	while (cents >= 5)
+	{
+		cents -= 5;
+		coin_cnt++;
+	}
+	while (cents >= 2)
+	{
+		cents -= 2;
+		coin_cnt++;
+	}
+	while (cents > 0)
+	{
+		cents--;
+		coin_cnt++;
+	}
+	printf("%d\n", coin_cnt);
 	return (0);
 }
 
