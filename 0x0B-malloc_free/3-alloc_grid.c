@@ -21,14 +21,20 @@ int **alloc_grid(int width, int height)
 	/* allocate memory for grid (pointer to pointer) */
 	grid = malloc(sizeof(*grid) * height);
 	if (grid == NULL)
+	{
+		free(grid);
 		return (NULL);
-
+	}
 	/* allocate memory for *grid (pointer to int) */
 	for (i = 0; i < width; i++)
 	{
 		*(grid + i) = malloc(sizeof(int) * width);
 		if (*grid == NULL)
+		{
+			for (i = 0; i < width; i++)
+				free(*(grid + i));
 			return (NULL);
+		}
 	}
 
 	/* initialize all elements to 0 */
