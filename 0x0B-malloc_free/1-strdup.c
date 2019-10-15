@@ -7,18 +7,18 @@
  * @str: string to duplicate
  *
  * Return: pointer to duplicate string
- */
 char *_strdup(char *str)
 {
 	char *str_cpy;
 	unsigned int i;
-	unsigned int len = 0;
+	unsigned int len;
 
 	/* check for error case */
 	if (*str == '\0')
 		return (NULL);
 
 	/* obtain str length */
+	len = 0;
 	while (str[len] != '\0')
 		len++;
 
