@@ -11,29 +11,27 @@
 char *str_concat(char *s1, char *s2)
 {
 	char *sCat;
-	int i = 0, j = 0;
+	int i, j = 0;
 	unsigned int len = 0;
 
-	/* take length of strings */
-	while (s1[i] != 0)
-	{
+	/* take length of strings, accounting for null-byte */
+	for (i = 0; s1[i] != 0; i++)
 		len++;
-		i++;
-	}
-	i = 0;
-	while (s2[i] != 0)
-	{
+	for (i = 0; s2[i] != 0; i++)
 		len++;
-		i++;
-	}
+	len++;
+
 	/* allocate mem for sCat */
 	sCat = malloc(sizeof(char) * len);
+	if (sCat == NULL)
+		return (NULL);
 
-	/* copy s1 and s2 successively to sCat */
+	/* copy s1 and s2 successively to sCat, end with '\0' */
 	for (i = 0; s1[i] != 0; i++, j++)
 		sCat[j] = s1[i];
 	for (i = 0; s2[i] != 0; i++, j++)
 		sCat[j] = s2[i];
+	sCat[j] = '\0';
 
 	return (sCat);
 }
