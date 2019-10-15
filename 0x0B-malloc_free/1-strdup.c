@@ -10,6 +10,7 @@
 char *_strdup(char *str)
 {
 	char *str_cpy;
+	unsigned int i;
 	unsigned int len = 0;
 
 	/* check for error case */
@@ -27,10 +28,11 @@ char *_strdup(char *str)
 		return (NULL);
 
 	/* copy string */
-	while (len)
+	i = 0;
+	while (i < len)
 	{
-		str_cpy[len - 1] = str[len - 1];
-		len--;
+		str_cpy[i] = str[i];
+		i++;
 	}
 	return (str_cpy);
 }
