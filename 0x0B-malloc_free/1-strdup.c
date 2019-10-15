@@ -15,22 +15,22 @@ char *_strdup(char *str)
 	unsigned int len = 0;
 
 	/* check for error case */
-	if (!*str)
+	if (*str == '\0')
 		return (NULL);
 
 	/* obtain str length */
-	while (str[len])
+	while (str[len] != '\0')
 		len++;
 
 	/* allocate memory for str_cpy */
-	str_cpy = malloc(sizeof(char) * len);
+	str_cpy = malloc(sizeof(*str) * len);
 
 	if (str_cpy == NULL)
 		return (NULL);
 
 	/* copy string */
 	i = 0;
-	while (i < len)
+	while (str[i] != '\0')
 	{
 		str_cpy[i] = str[i];
 		i++;
