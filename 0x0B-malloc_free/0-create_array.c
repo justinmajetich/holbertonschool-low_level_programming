@@ -21,6 +21,9 @@ char *create_array(unsigned int size, char c)
 	/* allocate memory */
 	arr = malloc(sizeof(c) * size);
 
+	if (arr == NULL)
+		return (NULL);
+
 	/* copy c to every element of arr */
 	for (i = 0; i < size; i++)
 		arr[i] = c;
