@@ -15,7 +15,7 @@ char *_strdup(char *str)
 	unsigned int len;
 
 	/* check for error case */
-	if (*str == '\0')
+	if (str == NULL)
 		return (NULL);
 
 	/* obtain str length */
@@ -23,9 +23,13 @@ char *_strdup(char *str)
 	while (str[len] != '\0')
 		len++;
 
+	/* increment for null-byte */
+	len++;
+
 	/* allocate memory for str_cpy */
 	str_cpy = malloc(sizeof(*str) * len);
 
+	/* check for malloc fail */
 	if (str_cpy == NULL)
 		return (NULL);
 
