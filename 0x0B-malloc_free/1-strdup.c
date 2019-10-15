@@ -7,6 +7,7 @@
  * @str: string to duplicate
  *
  * Return: pointer to duplicate string
+ */
 char *_strdup(char *str)
 {
 	char *str_cpy;
