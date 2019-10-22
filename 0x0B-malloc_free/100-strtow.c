@@ -33,7 +33,7 @@ char **strtow(char *str)
 	int i, row, str_cnt, word_cnt = count_words(str);
 
 	/* cover error cases */
-	if (str == NULL || *str == '\0')
+	if (str == NULL || *str == '\0' || word_cnt == 0)
 		return (NULL);
 
 	/* allocate word memory, plus null pointer */
