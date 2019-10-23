@@ -1,15 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int, char **);
-
 /**
- * _helper - print opcode of calling function
- * @n_bytes: number of bytes to print
+ * main - print first n opcodes
+ * @argc: argument count
+ * @argv: argument(s)
+ *
+ * Return: 0 on Success
  */
-void _helper(int n_bytes)
+int main(int argc, char **argv)
 {
-	int i = 0;
+	int n_bytes, i = 0;
+
+	/* check argument count */
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+
+	/* convert arg to int */
+	n_bytes = atoi(argv[1]);
 
 	/* check if num is negative */
 	if (n_bytes < 0)
@@ -21,32 +32,13 @@ void _helper(int n_bytes)
 	unsigned char *cptr = (unsigned char *)&main;
 
 	/* increment ptr through main, printing first n_byte mem addresses */
-	while (i++ < n_bytes)
+	while (i < n_bytes)
 	{
 		printf("%02x ", cptr[i]);
 		cptr++;
+		i++;
 	}
 	printf("\n");
-}
-
-/**
- * main - print opcodes of main
- * @argc: argument count
- * @argv: argument(s)
- *
- * Return: 0 on Success
- */
-int main(int argc, char **argv)
-{
-	/* check argument count */
-	if (argc != 2)
-	{
-		printf("Error\n");
-		exit(1);
-	}
-
-	/* convert arg to int and send to helper */
-	_helper(atoi(argv[1]));
 
 	return (0);
 }
