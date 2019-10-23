@@ -25,13 +25,6 @@ int main(int argc, char **argv)
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
 
-	/* check for proper operator */
-	if (*op != '+' && *op != '-' && *op != '*' && *op != '/' && *op != '%')
-	{
-		printf("Error\n");
-		exit(99);
-	}
-
 	/* check for zero division */
 	if ((*op == '/' || *op == '%') && (num2 == 0))
 	{
@@ -41,6 +34,12 @@ int main(int argc, char **argv)
 
 	/* select operation */
 	f = get_op_func(op);
+
+	if (f == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
 
 	/* print result */
 	printf("%d\n", f(num1, num2));
