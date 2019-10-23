@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	while (i < atoi(argv[1]))
 	{
 		printf("%02x", cptr[i]);
-		if (i + 1 != n_bytes)
+		if (i + 1 != atoi(argv[1]))
 			putchar(' ');
 		i++;
 	}
