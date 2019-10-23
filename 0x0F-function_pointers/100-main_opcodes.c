@@ -19,11 +19,8 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	/* convert arg to int */
-	n_bytes = atoi(argv[1]);
-
 	/* check if num is negative */
-	if (n_bytes < 0)
+	if (atoi(argv[1]) < 0)
 	{
 		printf("Error\n");
 		exit(2);
@@ -32,12 +29,11 @@ int main(int argc, char **argv)
 	unsigned char *cptr = (unsigned char *)main;
 
 	/* increment ptr through main, printing first n_byte mem addresses */
-	while (i < n_bytes)
+	while (i < atoi(argv[1]))
 	{
 		printf("%02x", cptr[i]);
 		if (i + 1 != n_bytes)
 			putchar(' ');
-		cptr++;
 		i++;
 	}
 	printf("\n");
