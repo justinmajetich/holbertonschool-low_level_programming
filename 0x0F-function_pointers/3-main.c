@@ -9,8 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	int num1 = atoi(argv[1]);
-	int num2 = atoi(argv[3]);
+	int num1, num2;
 	int (*f)(int, int);
 
 	char *op = argv[2];
@@ -21,6 +20,10 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(98);
 	}
+
+	/* convert args to ints */
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[3]);
 
 	/* check for proper operator */
 	if (*op != '+' && *op != '-' && *op != '*' && *op != '/' && *op != '%')
@@ -38,7 +41,7 @@ int main(int argc, char **argv)
 
 	/* select operation */
 	f = get_op_func(op);
-
+	
 	/* print result */
 	printf("%d\n", f(num1, num2));
 
