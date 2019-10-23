@@ -29,12 +29,14 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	unsigned char *cptr = (unsigned char *)&main;
+	unsigned char *cptr = (unsigned char *)main;
 
 	/* increment ptr through main, printing first n_byte mem addresses */
 	while (i < n_bytes)
 	{
-		printf("%02x ", cptr[i]);
+		printf("%02x", cptr[i]);
+		if (i + 1 != n_bytes)
+			putchar(' ');
 		cptr++;
 		i++;
 	}
