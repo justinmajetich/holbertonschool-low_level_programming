@@ -16,14 +16,14 @@ char *_cpystr(char *dest, char *src);
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int sum = 0, carry = 0; /* math vars */
-	int b_cnt; /* counter vars */
+	int b_cnt, i; /* counter vars */
 	int len1 = (_strlen(n1) - 1); /* subtract 1 to condition as counter */
 	int len2 = (_strlen(n2) - 1); /* "   " */
 
-	char buffer[size_r]; /* temp buffer */
+	char buffer[1024]; /* temp buffer */
 
 	/* convert and add numbers */
-	for (b_cnt = 0; size_r >= 0; size_r--, b_cnt++)
+	for (i = size_r, b_cnt = 0; i >= 0; i--, b_cnt++)
 	{
 		/* find sum of nubers */
 		if (len1 >= 0 && len2 >= 0)
@@ -35,14 +35,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		else
 			sum = 0;
 
-		printf("len1 = %d\nlen2 = %d\n", len1, len2);
-		printf("sum = %d\n", sum);
-
 		/* extract remainder, add carry, write backwards to buffer */
 		buffer[b_cnt] = ((sum + carry) % 10) + '0';
-
-		printf("carry = %d\n", carry);
-		printf("buffer[%d] = %c\n", b_cnt, buffer[b_cnt]);
 
 		/* extract carry */
 		carry = (sum + carry) / 10;
@@ -54,8 +48,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			break;
 		}
 	}
-	printf("buffer = %s\n", buffer);
-	printf("length of sum + 1 = %d\n", (_strlen(buffer) + 1));
 
 	/* check if r will store sum including null=byte */
 	if (size_r < _strlen(buffer) + 1)
@@ -98,6 +90,5 @@ char *_cpystr(char *dest, char *src)
 		dest[i++] = src[j--];
 	dest[i] = '\0';
 
-	printf("dest = %s\n", dest);
 	return (dest);
 }
