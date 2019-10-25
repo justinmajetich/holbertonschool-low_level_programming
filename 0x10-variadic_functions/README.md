@@ -1,7 +1,7 @@
 # ox10. C - Variadic functions
 This directory contains files created in response to tasks set forth in Holberton student project "0x10. C - Varidaic functions".
 
-Header File: variadic_functions.h
+### Header File: variadic_functions.h
 
 ### * Task 0 (0-sum_them_all.c):
 	* Write a function that returns the sum of all its parameters.
