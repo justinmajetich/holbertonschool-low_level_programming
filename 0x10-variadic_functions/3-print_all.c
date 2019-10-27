@@ -14,7 +14,7 @@ void print_all(const char * const format, ...)
 
 	va_start(args, format);
 	/* loop until null-byte */
-	while (format[i])
+	while (format && format[i])
 	{
 		/* print according to format specifier */
 		switch (format[i])
@@ -42,8 +42,8 @@ void print_all(const char * const format, ...)
 		{
 			if (valid_arg(format[i + j]))
 			{
-				printf(", ");
-				break;
+					printf(", ");
+					break;
 			}
 			j++;
 		}
@@ -66,7 +66,7 @@ int valid_arg(char c)
 	switch (c)
 	{
 		case 'c': case 'i': case 'f': case 's':
-		return (1);
+			return (1);
 	}
 	return (0);
 }
