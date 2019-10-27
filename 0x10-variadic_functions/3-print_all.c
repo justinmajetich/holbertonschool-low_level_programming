@@ -42,8 +42,8 @@ void print_all(const char * const format, ...)
 		{
 			if (valid_arg(format[i + j]))
 			{
-					printf(", ");
-					break;
+				printf(", ");
+				break;
 			}
 			j++;
 		}
