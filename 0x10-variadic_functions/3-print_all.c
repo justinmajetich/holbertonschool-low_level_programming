@@ -8,13 +8,18 @@ void print_all(const char * const format, ...)
 {
 	va_list args;
 	int i = 0;
+	char *buffer;
 
-	/* initialize arg list */
 	va_start(args, format);
-
 	/* loop until null-byte */
 	while (format[i])
 	{
+		if (i && (format[i - 1] == 'c' || format[i - 1] == 'i'
+		|| format[i] == 'f' || format[i] == 's') && 
+		(format[i] == 'c' || format[i] == 'i' || format[i] == 'f'
+		|| format[i] == 's'))
+			printf(", ");
+		
 		/* print according to format specifier */
 		switch (format[i])
 		{
@@ -28,22 +33,18 @@ void print_all(const char * const format, ...)
 				printf("%f", va_arg(args, double));
 				break;
 			case 's':
-				printf("%s", va_arg(args, char *));
-				break;
+				buffer = va_arg(args, char *);
+				if (buffer)
+				{
+					printf("%s", buffer);
+					break;
+				}
+				printf("(nil)");
 		}
-
-		/* print separator after all but last arg */
-		if ((format[i + 1]) && (format[i] == 'c'
-		|| format[i] == 'i' || format[i] == 'f'
-		|| format[i] == 's'))
-			printf(", ");
-
 		i++;
 	}
-
 	/* free args */
 	va_end(args);
 
-	/* end with newline */
 	printf("\n");
 }
