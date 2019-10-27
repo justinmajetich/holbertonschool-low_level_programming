@@ -14,24 +14,22 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	/* initialize arg list */
 	va_start(args, n);
 
-	/* print only is separator is not null */
-	if (separator)
-		while (i < n)
-		{
-			/* extract current arg to buffer string */
-			buffer = va_arg(args, char *);
+	while (i < n)
+	{
+		/* extract current arg to buffer string */
+		buffer = va_arg(args, char *);
 
-			/* print s if not NULL */
-			if (buffer)
-				printf("%s", buffer);
-			else
-				printf("(nil)");
-			/* print separator for all but last arg */
-			if (i + 1 != n)
-				printf("%s", separator);
+		/* print s if not NULL */
+		if (buffer)
+			printf("%s", buffer);
+		else
+			printf("(nil)");
+		/* print separator if not NULL for all but last arg */
+		if (separator && i + 1 != n)
+			printf("%s", separator);
 
-			i++;
-		}
+		i++;
+	}
 
 	/* free arg list */
 	va_end(args);
