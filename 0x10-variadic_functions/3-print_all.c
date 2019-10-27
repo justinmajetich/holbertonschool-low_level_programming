@@ -1,5 +1,7 @@
 #include "variadic_functions.h"
 
+int valid_arg(char c);
+
 /**
  * print_all - print anything
  * @format: format specifier
@@ -7,19 +9,13 @@
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	int i = 0;
+	int j, i = 0;
 	char *buffer;
 
 	va_start(args, format);
 	/* loop until null-byte */
 	while (format[i])
 	{
-		if (i && (format[i - 1] == 'c' || format[i - 1] == 'i'
-		|| format[i] == 'f' || format[i] == 's') && 
-		(format[i] == 'c' || format[i] == 'i' || format[i] == 'f'
-		|| format[i] == 's'))
-			printf(", ");
-		
 		/* print according to format specifier */
 		switch (format[i])
 		{
@@ -41,10 +37,36 @@ void print_all(const char * const format, ...)
 				}
 				printf("(nil)");
 		}
+		j = 1;
+		while (valid_arg(format[i]) && format[i + j])
+		{
+			if (valid_arg(format[i + j]))
+			{
+				printf(", ");
+				break;
+			}
+			j++;
+		}
 		i++;
 	}
 	/* free args */
 	va_end(args);
 
 	printf("\n");
+}
+
+/**
+ * valid_arg - check if arg is valid
+ * @c: arg type specifier
+ *
+ * Return: 1 if valid, 0 if not valid
+ */
+int valid_arg(char c)
+{
+	switch (c)
+	{
+		case 'c': case 'i': case 'f': case 's':
+		return (1);
+	}
+	return (0);
 }
