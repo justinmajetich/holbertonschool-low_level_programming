@@ -13,6 +13,9 @@ list_t *add_node_end(list_t **head, const char *str)
 	list_t *temp = *head; /* stores head address for iteration */
 	list_t node;
 
+	if (!str)
+		return (NULL);
+
 	/* assign pointer to new node */
 	new = &node;
 
