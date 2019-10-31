@@ -10,11 +10,14 @@ int _strlen(const char *s);
 list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *new;
-	list_t *temp = *head; /* stores head address for iteration */
+	list_t *temp;
 	list_t node;
 
-	if (!str)
+	if (!str || !head)
 		return (NULL);
+
+	/* copy list head to temp for  iteration */
+	temp = *head;
 
 	/* assign pointer to new node */
 	new = &node;
