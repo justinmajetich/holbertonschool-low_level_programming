@@ -26,17 +26,23 @@ list_t *add_node_end(list_t **head, const char *str)
 	new = malloc(sizeof(list_t));
 	if (!new)
 		return (NULL);
+	/**
+	 * allocate for string member
+	 * new->str = malloc(sizeof(char) * (_strlen(str)));
+	 * if (!new->str)
+	 * {
+	 *	free(new);
+	 *	return (NULL);
+	 * }
+	 */
 
-	/* allocate for string member 
-	new->str = malloc(sizeof(char) * (_strlen(str)));
+	/* initialize new node */
+	new->str = strdup(str);
 	if (!new->str)
 	{
 		free(new);
 		return (NULL);
-	}*/
-
-	/* initialize new node */
-	new->str = strdup(str);
+	}
 	new->len = _strlen(new->str);
 	new->next = NULL;
 
