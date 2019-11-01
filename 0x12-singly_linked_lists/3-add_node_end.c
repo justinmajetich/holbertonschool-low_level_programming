@@ -16,7 +16,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	if (!str || !head)
 		return (NULL);
 
-	/* copy list head to temp for  iteration */
+	/* copy list head pointer to temp for  iteration */
 	temp = *head;
 
 	/* assign pointer to new node */
@@ -30,7 +30,10 @@ list_t *add_node_end(list_t **head, const char *str)
 	/* allocate for string member */
 	new->str = malloc(sizeof(char) * (_strlen(str)));
 	if (!new->str)
+	{
+		free(new);
 		return (NULL);
+	}
 
 	/* initialize new node */
 	new->str = strdup(str);
@@ -38,9 +41,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	new->next = NULL;
 
 	/* if list is null, assign new node as head */
-	if (!temp)
-		*head = new;
-	else
+	if (temp)
 	{
 		/* find end of head list */
 		while (temp->next)
@@ -48,6 +49,8 @@ list_t *add_node_end(list_t **head, const char *str)
 		/* point current end node to new end node */
 		temp->next = new;
 	}
+	else
+		*head = new;
 
 	return (new);
 }
