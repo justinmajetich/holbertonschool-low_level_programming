@@ -11,7 +11,7 @@ listint_t *reverse_listint(listint_t **head)
 	listint_t *tail;
 
 	/* if list doesn't exist, return NULL */
-	if (!head)
+	if (!head || !(*head))
 		return (NULL);
 
 	/* inititalized pointers to starting positions */
