@@ -19,7 +19,7 @@ int pop_listint(listint_t **head)
 
 	/* store n value for return after deletion */
 	n_store = (*head)->n;
-	
+
 	/* point head to new head node */
 	*head = (*head)->next;
 
