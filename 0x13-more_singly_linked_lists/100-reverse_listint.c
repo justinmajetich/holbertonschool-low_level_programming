@@ -15,7 +15,7 @@ listint_t *reverse_listint(listint_t **head)
 		return (NULL);
 
 	/* if single element list, return head */
-	if ((*head)->next)
+	if (!(*head)->next)
 		return (*head);
 
 	/* inititalized pointers to starting positions */
