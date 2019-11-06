@@ -23,10 +23,13 @@ size_t print_listint_safe(const listint_t *head)
 	do {
 		if (temp == entry)
 		{
-			if (entered)
-				break;
-			else
+			if (!entered)
 				entered++;
+			else
+			{
+				printf("-> [%p] %d\n", (void *)temp, temp->n);
+				break;
+			}
 		}
 		printf("[%p] %d\n", (void *)temp, temp->n);
 		node_cnt++;
@@ -36,7 +39,7 @@ size_t print_listint_safe(const listint_t *head)
 	return (node_cnt);
 }
 /**
- * find_listint_loop - find loop entry in list
+ * find_loop_entry - find loop entry in list
  * @head: start of list
  *
  * Return: address of loop entry on Success, NULL on Fail
@@ -51,7 +54,7 @@ const listint_t *find_loop_entry(const listint_t *head)
 		{
 			if (slow == head || fast == head)
 				return (head);
-			
+
 			if (slow == fast)
 				break;
 
