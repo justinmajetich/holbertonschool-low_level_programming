@@ -14,7 +14,7 @@ size_t print_listint_safe(const listint_t *head)
 
 	/* exit if list is empty */
 	if (!head)
-		exit(98);
+		return (node_cnt);
 
 	temp = head;
 	entry = find_loop_entry(head);
