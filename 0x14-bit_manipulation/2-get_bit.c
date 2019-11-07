@@ -8,16 +8,14 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
+	if (index > (sizeof(size_t) * 8))
+		return (-1);
+
 	/* shift to target bit */
 	n >>= index;
 
-	if (n)
-	{
-		if (n & 1)
-			return (1);
-		else
-			return (0);
-	}
+	if (n & 1)
+		return (1);
 	else
-		return (-1);
+		return (0);
 }
