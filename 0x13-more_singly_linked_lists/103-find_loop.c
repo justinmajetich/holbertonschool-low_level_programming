@@ -15,7 +15,7 @@ listint_t *find_listint_loop(listint_t *head)
 		{
 			if (slow == head || fast == head)
 				return (head);
-			
+
 			if (slow == fast)
 				break;
 
