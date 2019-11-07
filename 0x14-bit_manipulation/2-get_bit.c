@@ -8,10 +8,6 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	/* if number is 0 and index is in range return number */
-	if (!n && !index)
-		return (0);
-
 	/* shift to target bit */
 	n >>= index;
 
