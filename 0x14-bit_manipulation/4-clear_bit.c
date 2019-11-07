@@ -14,6 +14,7 @@ int clear_bit(unsigned long int *n, unsigned int index)
 		return (-1);
 
 	test >>= index;
+
 	if (test & 1)
 	{
 		/* set mask */
@@ -24,5 +25,5 @@ int clear_bit(unsigned long int *n, unsigned int index)
 		return (1);
 	}
 	else
-		return (-1);
+		return (1);
 }
