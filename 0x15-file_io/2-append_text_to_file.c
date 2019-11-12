@@ -9,7 +9,7 @@ int _strlen(char *s);
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int fd;
+	int fd, write_succ;
 
 	/* guard against NULL filename arg */
 	if (!filename)
@@ -21,8 +21,11 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 
 	if (text_content) /* append file, checking for failure */
-		if (write(fd, text_content, _strlen(text_content) == -1))
+	{
+		write_succ = write(fd, text_content, _strlen(text_content));
+		if (write_succ == -1) /* if write fails */
 			return (-1);
+	}
 
 	/* close file descriptor */
 	close(fd);
