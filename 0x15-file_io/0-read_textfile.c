@@ -9,7 +9,8 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t fd, print_cnt;
+	int fd;
+	ssize_t print_cnt, read_cnt;
 	char *buffer;
 
 	/* check for NULL arg */
@@ -26,11 +27,12 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	/* read file to buffer, check success */
-	if (read(fd, buffer, letters) == -1)
+	read_cnt = read(fd, buffer, letters);
+	if (read_cnt == -1)
 		return (0);
 
 	/* write buffer to stdout, check success */
-	print_cnt = write(STDOUT_FILENO, buffer, letters);
+	print_cnt = write(STDOUT_FILENO, buffer, read_cnt);
 	if (print_cnt == -1)
 		return (0);
 
