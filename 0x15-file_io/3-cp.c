@@ -9,7 +9,7 @@ void copy_contents(int, char *, int, char *);
  */
 int main(int argc, char **argv)
 {
-	int f1, f2;
+	int f1, f2, close_check;
 
 	/* check arg count */
 	if (argc != 3)
@@ -17,7 +17,6 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
 	/* open file_from */
 	f1 = open(argv[1], O_RDONLY);
 	if (f1 == -1)
@@ -25,12 +24,12 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-
 	/* open file_to */
 	f2 = open(argv[2], (O_WRONLY | O_TRUNC | O_CREAT), 00664);
 	if (f2 == -1)
 	{
-		if ((close(f1)) == -1)
+		close_check = close(f1);
+		if (close_check == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f1);
 			exit(100);
@@ -42,12 +41,14 @@ int main(int argc, char **argv)
 	copy_contents(f2, argv[2], f1, argv[1]);
 
 	/* close file descriptors */
-	if ((close(f1)) == -1)
+	close_check = close(f1);
+	if (close_check == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f1);
 		exit(100);
 	}
-	if ((close(f2)) == -1)
+	close_check = close(f2);
+	if (close_check == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f2);
 		exit(100);
