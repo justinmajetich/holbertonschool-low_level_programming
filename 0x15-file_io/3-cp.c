@@ -70,7 +70,7 @@ void copy_contents(int f2, char *filename2, int f1, char *filename1)
 	while (read_cnt) /* iterate till nothing left to read */
 	{
 		/* read file_from to buffer */
-		read_cnt = read(f1, buffer, 1024);
+		read_cnt = read(f1, buffer, sizeof(buffer));
 		if (read_cnt == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename1);
