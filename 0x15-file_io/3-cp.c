@@ -36,15 +36,15 @@ int main(int argc, char **argv)
 	/* copy contents from old file to new */
 	copy_contents(f2, argv[2], f1, argv[1]);
 
-	/* close source file descriptor */
+	/* close file descriptors */
 	if ((close(f1)) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d", f1);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f1);
 		exit(100);
 	}
 	if ((close(f2)) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d", f2);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f2);
 		exit(100);
 	}
 	return (0);
