@@ -76,6 +76,8 @@ void copy_contents(int f2, char *filename2, int f1, char *filename1)
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename1);
 			exit(98);
 		}
+		if (!read_cnt)
+			break;
 
 		/* write buffer to file_to */
 		write_cnt = write(f2, buffer, read_cnt);
