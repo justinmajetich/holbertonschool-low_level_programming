@@ -30,7 +30,8 @@ int main(int argc, char **argv)
 	f2 = open(argv[2], (O_WRONLY | O_TRUNC | O_CREAT | O_APPEND), 00664);
 	if (f2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		close(f1);
 		exit(99);
 	}
 	/* copy contents from old file to new */
@@ -75,7 +76,7 @@ void copy_contents(int f2, char *filename2, int f1, char *filename1)
 		write_cnt = write(f2, buffer, read_cnt);
 		if (write_cnt == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename2);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename2);
 			exit(99);
 		}
 	}
