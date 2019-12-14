@@ -2,6 +2,7 @@
 /**
  * add_dnodeint - add new node to head of list
  * @head: head of list
+ * @n: node data
  *
  * Return: pointer to new node, NULL on Failure
  */
@@ -21,5 +22,5 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	new->next = *head;
 	*head = new;
 
-	return (*head);
+	return (new);
 }
