@@ -18,6 +18,7 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 		return (NULL);
 
 	new->n = n; /* set node data */
+	new->next = NULL;
 
 	temp = *head;
 	if (temp) /* if list exists */
@@ -26,12 +27,11 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 			temp = temp->next;
 		temp->next = new;
 		new->prev = temp;
-		new->next = NULL;
 	}
 	else
+	{
+		new->prev = NULL;
 		*head = new; /* new is head, if only node */
-		new->prev = NULL; /* will be NULL is no list */
-		new->next = NULL;
-
+	}
 	return (new);
 }
