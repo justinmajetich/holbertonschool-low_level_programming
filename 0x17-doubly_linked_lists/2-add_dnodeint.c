@@ -8,7 +8,7 @@
  */
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	dlistint_t *new;
+	dlistint_t *new, *temp;
 
 	if (!head)
 		return (NULL);
@@ -17,10 +17,12 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	if (!new)
 		return (NULL);
 
-	new->n = n;
+	new->n = n; /* initialize data */
 	new->prev = NULL;
 	new->next = *head;
+	if (*head) /* only if list already exists */
+		*head->prev = new;
 	*head = new;
 
-	return (new);
+	return (*head);
 }
