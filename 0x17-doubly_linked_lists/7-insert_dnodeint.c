@@ -25,21 +25,20 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		}
 		if (i == idx) /* if index found */
 		{
+			if (idx == 0) /* if node added at head */
+				return (add_dnodeint(&(*h), n));
+
 			new = malloc(sizeof(dlistint_t));
 			if (!new)
 				return (NULL);
 			new->n = n;
 			new->next = temp;
-			if (idx == 0) /* if node added at head */
-			{
-				new->prev = NULL;
-				*h = new;
-			}
-			else
-				new->prev = temp->prev;
+			new->prev = temp->prev;
 			temp->prev = new;
 			return (new);
 		}
+		if (i + 1 == idx) /* if index is at end of list */
+			return (add_dnodeint_end(&(*h), n));
 	}
 	else
 		if (idx == 0) /* if list empty and index is 0 */
