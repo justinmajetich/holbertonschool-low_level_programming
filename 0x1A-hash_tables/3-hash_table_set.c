@@ -25,7 +25,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	/* initialize node with value duplicate */
-	new->key = (char *)key; /* store key in node */
+	new->key = strdup(key); /* store key in node */
 	if (!new->key)
 	{
 		free(new);
