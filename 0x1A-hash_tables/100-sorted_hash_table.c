@@ -48,7 +48,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		return (0);
 	index = hash_djb2((const unsigned char *)key) % ht->size;
 	new = malloc(sizeof(shash_node_t));
-	if (!new) return (0);
 	new->key = strdup(key); /* store key in node */
 	new->value = strdup(value); /* dup value to node */
 	new->next = ht->array[index]; /* attach new to head of list at index */
