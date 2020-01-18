@@ -20,6 +20,8 @@ void hash_table_print(const hash_table_t *ht)
 				while (head) /* print 'key: value' for list */
 				{
 					printf("'%s': '%s'", head->key, head->value);
+					if (head->next)
+						printf(", ");
 					head = head->next;
 				}
 				/* check if other valid entries follow */
