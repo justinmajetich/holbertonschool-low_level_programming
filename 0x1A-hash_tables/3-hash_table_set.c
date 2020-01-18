@@ -26,8 +26,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	/* initialize node with value duplicate */
 	new->key = strdup((char *)key); /* store key in node */
+	if (!new->key)
+	{
+		free(new);
+		return (0);
+	}
 	new->value = strdup(value); /* dup value to node */
-
+	if (!new->value)
+	{
+		free(new->key);
+		free(new);
+		return (0);
+	}
 	new->next = ht->array[index]; /* attach new to head of list at index */
 	ht->array[index] = new; /* assign index pointer to new node */
 
