@@ -19,6 +19,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/* derive index from key */
 	index = hash_djb2((const unsigned char *)key) % ht->size;
 
+	/* check if key already exists */
+	new = ht->array[index];
+	while (new)
+	{
+		if (strcmp(new->key, key) == 0)
+		{
+			new->value = strdup(value);
+			return (1);
+		}
+		new = new->next;
+	}
+
 	/* create new node */
 	new = malloc(sizeof(hash_node_t));
 	if (!new)
@@ -27,19 +39,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/* initialize node with value duplicate */
 	new->key = strdup(key); /* store key in node */
 	if (!new->key)
-	{
-		free(new);
 		return (0);
-	}
 	new->value = strdup(value); /* dup value to node */
 	if (!new->value)
-	{
-		free(new->key);
-		free(new);
 		return (0);
-	}
 	new->next = ht->array[index]; /* attach new to head of list at index */
 	ht->array[index] = new; /* assign index pointer to new node */
-
 	return (1);
 }
