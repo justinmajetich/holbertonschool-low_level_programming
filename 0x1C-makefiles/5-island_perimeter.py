@@ -43,5 +43,5 @@ def island_perimeter(grid):
                 else:
                     if grid[row_i + 1][col_i] is not 1:
                         perimeter = perimeter + 1
-    
+
     return perimeter
