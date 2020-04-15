@@ -28,7 +28,8 @@ int interpolation_search(int *array, size_t size, int value)
  */
 int recurse_helper(int *array, size_t left, size_t right, int value)
 {
-	size_t pos = left + (((double)(right - left) / (array[right] - array[left])) * (value - array[left]));
+	size_t pos = left + (((double)(right - left) /
+(array[right] - array[left])) * (value - array[left]));
 
 	if (pos > right)
 	{
