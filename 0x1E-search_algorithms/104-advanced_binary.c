@@ -50,7 +50,11 @@ size_t right, int value, ssize_t *match)
 
 	/* check if mid is value */
 	if (array[mid] == value)
+	{
 		*match = mid;
+		if (right - left > 1)
+			mid++;
+	}
 	else if (array[mid] < value) /* search right */
 		return (recurse_helper(array, mid + 1, right, value, match));
 
