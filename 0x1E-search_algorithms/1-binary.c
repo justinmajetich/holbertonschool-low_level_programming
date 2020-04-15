@@ -35,9 +35,9 @@ int recurse_helper(int *array, size_t left, size_t right, int value)
 		return (-1);
 
 	/* print search progress */
-	printf("Searching in array: %lu", i++);
+	printf("Searching in array: %d", array[i++]);
 	while (i <= right)
-		printf(", %lu", i++);
+		printf(", %d", array[i++]);
 	printf("\n");
 
 	/* calculate mid */
