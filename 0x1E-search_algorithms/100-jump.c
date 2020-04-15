@@ -54,7 +54,7 @@ int recurse_helper(int *array, size_t size, size_t step, size_t idx, int val)
  */
 int subrecurse_help(int *array, size_t size, size_t end, size_t idx, int val)
 {
-	if (idx >= size || idx > end)
+	if (idx >= size || idx > end || array[idx] > val)
 		return (-1);
 
 	printf("Value checked array[%lu] = [%d]\n", idx, array[idx]);
