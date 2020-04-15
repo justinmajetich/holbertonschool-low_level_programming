@@ -33,7 +33,7 @@ int recurse_helper(int *array, size_t left, size_t right, int value)
 
 	if (pos > right)
 	{
-		printf("Value checked array [%lu] is out of range\n", pos);
+		printf("Value checked array[%lu] is out of range\n", pos);
 		return (-1);
 	}
 
