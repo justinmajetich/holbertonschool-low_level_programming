@@ -34,7 +34,7 @@ int recurse_helper(int *array, size_t size, size_t step, size_t idx, int val)
 	printf("Value checked array[%lu] = [%d]\n", idx, array[idx]);
 
 	/* if value is greater, jump forward */
-	if ((array[idx + step] < val) && (idx + step < size))
+	if (((idx + step < size) && array[idx + step] < val))
 		return (recurse_helper(array, size, step, idx + step, val));
 
 	/* recurse subarray */
