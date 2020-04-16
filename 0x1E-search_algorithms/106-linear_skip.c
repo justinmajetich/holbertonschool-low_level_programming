@@ -1,6 +1,6 @@
 #include "search_algos.h"
 
-skiplist_t *recurse_normal(skiplist_t *probe, int value);
+skiplist_t *recurse_normal(skiplist_t *probe, skiplist_t *stop, int value);
 skiplist_t *recurse_express(skiplist_t *probe, int value);
 skiplist_t *find_list_end(skiplist_t *probe);
 
@@ -23,7 +23,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 	if (zone->n == value)
 		return (zone);
 	else
-		return (recurse_normal(zone, value));
+		return (recurse_normal(zone, zone->express, value));
 }
 /**
  * recurse_express - search express list
@@ -47,7 +47,7 @@ probe->index, last->index);
 	printf("Value checked at index [%lu] = [%d]\n",
 probe->express->index, probe->express->n);
 
-	if (probe->express->n > value)
+	if (probe->express->n >= value)
 	{
 		printf("Value found between indexes [%lu] and [%lu]\n",
 probe->index, probe->express->index);
@@ -59,14 +59,20 @@ probe->index, probe->express->index);
 /**
  * recurse_normal - search normal list
  * @probe: search pointer
+ * @stop: endpoint of subsearch; either express node or NULL
  * @value: search value
  *
  * Return: pointer to match; NULL if not found
  */
-skiplist_t *recurse_normal(skiplist_t *probe, int value)
+skiplist_t *recurse_normal(skiplist_t *probe, skiplist_t *stop, int value)
 {
-	if (probe == NULL)
-		return (NULL);
+	if (probe == stop)
+	{
+		if (stop != NULL && stop->n == value)
+			return (stop);
+		else
+			return (NULL);
+	}
 
 	printf("Value checked at index [%lu] and [%d]\n",
 probe->index, probe->n);
@@ -74,7 +80,7 @@ probe->index, probe->n);
 	if (probe->n == value)
 		return (probe);
 	else
-		return (recurse_normal(probe->next, value));
+		return (recurse_normal(probe->next, stop, value));
 }
 /**
  * find_list_end - find last node
