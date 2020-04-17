@@ -74,7 +74,7 @@ skiplist_t *recurse_normal(skiplist_t *probe, skiplist_t *stop, int value)
 			return (NULL);
 	}
 
-	printf("Value checked at index [%lu] and [%d]\n",
+	printf("Value checked at index [%lu] = [%d]\n",
 probe->index, probe->n);
 
 	if (probe->n == value)
